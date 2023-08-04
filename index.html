@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/index-d3831720.css">
     <link rel="icon" href="assets/microsoft_Favicon.ico">
     <title>Microsoft – Cloud, Computers, Apps &amp; Gaming</title>
+    <link rel="stylesheet" href="assets/index-8a4565e2.css">
     <style>
         @media((min-width: 540px) and (max-width: 1084px)){
             .card{
@@ -30,6 +30,29 @@
                 font-size: 29px;
                 line-height: 35px;
             }
+            #box1{
+                margin-left: 8%;
+            }
+            #box2{
+                margin-left: 18%;
+                width: 600px;
+            }
+        }
+        @media(min-width: 2800px){
+            #box1{
+                margin-left: 18%;
+            }
+            #box2{
+                margin-left: 30%;
+            }
+        }
+        @media(min-width: 3200px){
+            #box1{
+                margin-left: 20%;
+            }
+            #box2{
+                margin-left: 35%;
+            }
         }
     </style>
 </head>
@@ -37,23 +60,35 @@
     <!-- Navbar -->
     <div class="navbar flex justify-between items-center p-3 md:text-[13px] 2xl:w-[1920px] 2xl:mx-auto">
         <div class="flex justify-center items-center md:order-2">
-            <div class="hamburger inline-block cursor-pointer md:hidden">
-                <div class="line h-0.5 w-6 bg-black my-1"></div>
-                <div class="line h-0.5 w-6 bg-black my-1"></div>
-                <div class="line h-0.5 w-6 bg-black my-1"></div>
+            <div class="hamburger inline-block cursor-pointer md:hidden w-5" onclick=ToggleHide()>
+                <div id="hamburger">
+                    <div class="line h-0.5 w-6 bg-black my-1"></div>
+                    <div class="line h-0.5 w-6 bg-black my-1"></div>
+                    <div class="line h-0.5 w-6 bg-black my-1"></div>
+                </div>
+                <img id="cross" class="w-4" src="assets/wrong.png" alt="x" hidden>
             </div>
             <div class="search md:hidden w-5 mx-5"><img src="assets/searchicon.png" alt=""></div>
         </div>
 
         <div class="logo md:order-1 flex items-center md:space-x-8">
             <img class="w-28 lg:ml-[5vw]" src="assets/Microsoft logo.png" alt="Microsoft">
-            <div class="features md:flex items-center md:mx-4 md:space-x-4 bg-gray-100 w-fit md:bg-white absolute inset-0 -translate-x-28 md:translate-x-0 md:static mt-16 md:mt-0">
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Microsoft 365</div>
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Teams</div>
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Windows</div>
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Surface</div>
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Xbox</div>
-                <div class="fitem p-1 cursor-pointer hover:underline hover:underline-offset-8">Support</div>
+            <div id="menu" class="features md:flex md:items-center md:mx-4 bg-gray-100 w-full md:bg-white absolute md:static inset-0 mt-14 md:mt-0 z-30 h-fit" hidden>
+                <hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Microsoft 365</div><hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Teams</div><hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Windows</div><hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Surface</div><hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Xbox</div><hr>
+                <div class="fitem p-[0.9rem] md:mr-4 md:p-1 cursor-pointer md:hover:underline md:hover:underline-offset-8">Support</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">Software</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">PC & Devices</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">Entertainment</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">Business</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">Developer & IT</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">Other</div><hr>
+                <div class="fitem p-[0.9rem] md:hidden cursor-pointer">View Sitemap</div>
+                <hr class="h-[2px] bg-black">
             </div>
         </div>
         <div class="cart md:order-3 flex space-x-5 lg:mr-[4vw] xl:mr-[5vw]">
@@ -77,8 +112,8 @@
     </div>
 
     <!-- body -->
-    <div class="slider flex flex-col-reverse lg:flex-row 2xl:w-[1920px] 2xl:mx-auto">
-        <div class="left shadow-md flex flex-wrap z-10 p-6 md:bg-white md:mx-4 md:-translate-y-12 md:shadow-2xl lg:absolute lg:bg-transparent lg:shadow-none lg:bg-none lg:w-[40%] lg:h-[550px] lg:items-center lg:justify-center lg:-translate-y-0 xl:h-[500px]">
+    <div class="slider flex flex-col-reverse lg:flex-row ">
+        <div id="box1" class="left shadow-md flex flex-wrap z-10 p-6 md:bg-white md:mx-4 md:-translate-y-12 md:shadow-2xl lg:absolute lg:bg-transparent lg:shadow-none lg:w-[40%] lg:h-[550px] lg:items-center lg:justify-center lg:-translate-y-0 xl:h-[500px]">
             <div class="md:p-6">
                 <h1 class="text-2xl lg:text-3xl font-semibold lg:my-2 xl:text-4xl">Microsoft 365</h1>
                 <p class="py-3 lg:my-2">Everything you need to achieve more in less time</p>
@@ -91,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="right z-0">
+        <div class="right z-0 mx-auto w-fit">
             <img class="sm:hidden" src="assets/microsoft_front_image_1_smalest.avif" alt="Error loading image">
             <img class="hidden sm:block md:hidden" src="assets/microsoft_front_image_1_medium.avif" alt="Error loading image">
             <img class="hidden md:block lg:hidden" src="assets/microsoft_front_image_1_large.avif" alt="Error loading image">
@@ -167,6 +202,24 @@
         </div>
     </div>
 
+    <div class="my-10 p-4 lg:p-14">
+        <div class="z-0 w-fit mx-auto">
+            <img class="sm:hidden" src="assets/laptopImage-5.jpg" alt="Error loading image">
+            <img class="hidden sm:block md:hidden" src="assets/laptopImage-4.jpg" alt="Error loading image">
+            <img class="hidden md:block lg:hidden" src="assets/laptopImage-3.jpg" alt="Error loading image">
+            <img class="hidden lg:block xl:hidden" src="assets/laptopImage-2.jpg" alt="Error loading image">
+            <img class="hidden xl:block" src="assets/laptopImage-1.jpg" alt="Error loading image">
+        </div>
+        <div id="box2" class="shadow-md flex flex-wrap z-10 p-6 md:bg-white md:mx-4 md:-translate-y-12 md:shadow-2xl lg:text-white lg:mx-[8%] lg:absolute lg:bg-transparent lg:shadow-none lg:w-[35%] lg:items-center lg:justify-center lg:-translate-y-[29rem] xl:w-[16%px] xl:ml-[10%]">
+            <div class="md:p-6">
+                <h1 class="text-2xl lg:text-3xl font-semibold lg:my-2 xl:text-4xl">Designed for Life today - and tommorow</h1>
+                <p class="py-3 lg:my-2">The next-generation of games. Your goals. Friends and family. Windows 11 was made to bring you closer to everything you love.</p>
+                <div class="flex flex-wrap lg:my-2">
+                    <button class="py-2 px-4 h-10 bg-blue-600 text-white font-semibold my-2 mr-6 rounded-sm cursor-pointer hover:bg-blue-700 xl:text" >See if your PC is ready</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- cards again -->
     <div class="flex flex-wrap justify-center my-14">
@@ -328,5 +381,22 @@
     </footer>
 
 </body>
-
+<script>
+    const ToggleHide = ()=>{
+        let menu = document.getElementById('menu');
+        let cross = document.getElementById('cross');
+        let hamburger = document.getElementById('hamburger');
+        
+        if(menu.hasAttribute('hidden')){
+            menu.removeAttribute('hidden');
+            cross.removeAttribute('hidden');
+            hamburger.setAttribute('hidden', true);
+        }
+        else{
+            menu.setAttribute('hidden', true);
+            cross.setAttribute('hidden', true);
+            hamburger.removeAttribute('hidden');
+        }
+    }
+</script>
 </html>
